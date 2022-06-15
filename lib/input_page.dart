@@ -35,38 +35,34 @@ class InputPageState extends State<InputPage> {
               child: Row(
             children: [
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: ReusableCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = GenderType.male;
                     });
                   },
-                  child: ReusableCard(
-                    backgroundColor: selectedGender == GenderType.male
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    cardChild: IconContent(
-                      icon: maleIcon,
-                      label: maleLabel,
-                    ),
+                  backgroundColor: selectedGender == GenderType.male
+                      ? activeCardColor
+                      : inactiveCardColor,
+                  cardChild: const IconContent(
+                    icon: maleIcon,
+                    label: maleLabel,
                   ),
                 ),
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: ReusableCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = GenderType.female;
                     });
                   },
-                  child: ReusableCard(
-                    backgroundColor: selectedGender == GenderType.female
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    cardChild: IconContent(
-                      icon: femaleIcon,
-                      label: femaleLabel,
-                    ),
+                  backgroundColor: selectedGender == GenderType.female
+                      ? activeCardColor
+                      : inactiveCardColor,
+                  cardChild: const IconContent(
+                    icon: femaleIcon,
+                    label: femaleLabel,
                   ),
                 ),
               ),
