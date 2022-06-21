@@ -25,42 +25,45 @@ class InputPageState extends State<InputPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-              child: Row(
-            children: [
-              Expanded(
-                child: ReusableCard(
-                  onPress: () {
-                    setState(() {
-                      selectedGender = GenderType.male;
-                    });
-                  },
-                  backgroundColor: selectedGender == GenderType.male
-                      ? kActiveCardColor
-                      : kInactiveCardColor,
-                  cardChild: const IconContent(
-                    icon: kMaleIcon,
-                    label: kMaleLabel,
+            child: Row(
+              children: [
+                Expanded(
+                  child: ReusableCard(
+                    onPress: () {
+                      setState(
+                        () {
+                          selectedGender = GenderType.male;
+                        },
+                      );
+                    },
+                    backgroundColor: selectedGender == GenderType.male
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
+                    cardChild: const IconContent(
+                      icon: kMaleIcon,
+                      label: kMaleLabel,
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: ReusableCard(
-                  onPress: () {
-                    setState(() {
-                      selectedGender = GenderType.female;
-                    });
-                  },
-                  backgroundColor: selectedGender == GenderType.female
-                      ? kActiveCardColor
-                      : kInactiveCardColor,
-                  cardChild: const IconContent(
-                    icon: kFemaleIcon,
-                    label: kFemaleLabel,
+                Expanded(
+                  child: ReusableCard(
+                    onPress: () {
+                      setState(() {
+                        selectedGender = GenderType.female;
+                      });
+                    },
+                    backgroundColor: selectedGender == GenderType.female
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
+                    cardChild: const IconContent(
+                      icon: kFemaleIcon,
+                      label: kFemaleLabel,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          )),
+              ],
+            ),
+          ),
           Expanded(
             child: ReusableCard(
               cardChild: Column(
@@ -85,17 +88,27 @@ class InputPageState extends State<InputPage> {
                       )
                     ],
                   ),
-                  Slider(
-                    value: height.toDouble(),
-                    max: kSliderMax,
-                    min: kSliderMin,
-                    activeColor: kSliderActiveColor,
-                    inactiveColor: kSliderInactiveColor,
-                    onChanged: (double value) {
-                      setState(() {
-                        height = value.round();
-                      });
-                    },
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      overlayColor: kSliderThemeOverlayColor,
+                      activeTrackColor: kSliderActiveColor,
+                      inactiveTrackColor: kSliderInactiveColor,
+                      thumbColor: kBottomContainerColor,
+                      thumbShape: const RoundSliderThumbShape(
+                          enabledThumbRadius: kEnabledThumbRadius),
+                      overlayShape: const RoundSliderOverlayShape(
+                          overlayRadius: kOverlayRadius),
+                    ),
+                    child: Slider(
+                      value: height.toDouble(),
+                      max: kSliderMax,
+                      min: kSliderMin,
+                      onChanged: (double value) {
+                        setState(() {
+                          height = value.round();
+                        });
+                      },
+                    ),
                   ),
                 ],
               ),
