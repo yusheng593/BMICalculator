@@ -217,14 +217,16 @@ class InputPageState extends State<InputPage> {
                   MaterialPageRoute(builder: (context) => ResultsPage()));
             },
             child: Container(
-              child: Center(
-                  child: Text(
-                '計算 BMI',
-              )),
               color: kBottomContainerColor,
               height: kBottomContainerHeight,
               width: double.infinity,
               margin: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(bottom: 20.0),
+              child: const Center(
+                  child: Text(
+                kBottomContainerText,
+                style: kLargeButtonTextStyle,
+              )),
             ),
           )
         ],
