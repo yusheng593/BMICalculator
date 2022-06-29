@@ -1,4 +1,5 @@
 import 'package:bmi_calculator/constants.dart';
+import 'package:bmi_calculator/input_page.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
 
@@ -14,11 +15,16 @@ class ResultsPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            '計算結果',
-            style: kTittleTextStyle,
+          Expanded(
+            child: Container(
+              child: Text(
+                '計算結果',
+                style: kTittleTextStyle,
+              ),
+            ),
           ),
           Expanded(
+            flex: 5,
             child: ReusableCard(
               backgroundColor: kActiveCardColor,
               cardChild: Column(
@@ -26,32 +32,27 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'data',
+                    '太胖了',
                     style: kResultTextStyle,
                   ),
-                  Text('data'),
-                  Text('data'),
+                  Text(
+                    '38',
+                    style: kBMITextStyle,
+                  ),
+                  Text(
+                    '該減肥了~該減肥了~該減肥了~該減肥了~該減肥了~',
+                    style: kBodyTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            buttonText: kBottomButtonText,
             onTap: () {
               Navigator.pop(context);
             },
-            child: Container(
-              color: kBottomContainerColor,
-              height: kBottomContainerHeight,
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 10.0),
-              padding: EdgeInsets.only(bottom: 20.0),
-              child: Center(
-                child: Text(
-                  '返回重新計算',
-                  style: kLargeButtonTextStyle,
-                ),
-              ),
-            ),
           )
         ],
       ),
